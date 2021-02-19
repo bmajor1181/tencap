@@ -23,8 +23,8 @@ var client = hdb.createClient({
 */
 var client = hdb.createClient({
 	serverNode: 'zeus.hana.prod.us-east-1.whitney.dbaas.ondemand.com:27190',
-    UID: 'TENCAP_1_2A2SLCV1ES70KP3D9O1AERIGA_RT',
-    PWD: 'Mw26lF4-R2vs2LU47huzv7Wyntzvuyzuval-g6HGkJEj3H0SvX6D_sPwEGKkQqkPWtL54YmUm.FN72H_-3aFdAl3JGQdXKLzrcHEY.FSj59XHIt9PuqqET0kAefaRzFD',	
+    UID: '',
+    PWD: '',	
     encrypt: true,  //Must be set to true when connecting to SAP HANA Cloud or HaaS.  
     sslValidateCertificate: true,  //Must be set to false when connecting
     ssltruststore: './trustTEN.pem',
