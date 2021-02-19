@@ -1,0 +1,209 @@
+<mvc:View
+	id="mainView"
+	controllerName="FeatureUI.FeatureUI"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:tnt="sap.tnt"	
+	xmlns="sap.m">
+
+	<l:VerticalLayout id="containerLayout" width="100%">
+		<l:BlockLayout id="BlockLayout" background="Dashboard">
+
+			<l:BlockLayoutRow>
+				<l:BlockLayoutCell width="50">
+<!--FilterBar 1-->
+					<!--<Label text="Search by Order of Battle" design="Bold"/>-->
+					<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true"  showGoOnFB="false"  filterBarExpanded="true">
+						<fb:filterGroupItems>
+
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="forceListSrch" label="Force Type" labelTooltip="Tooltip Example" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select
+									id="forceSelect"
+									forceSelection="false"
+									change="changedSelSvc"
+									items="{
+										path: '/serviceBranch',
+										sorter: { path: 'ServiceType' }
+									}">
+									<core:Item key="{ServiceType}" text="{ServiceType}" />
+								</Select>							
+							</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="OBJListSrch" label="Base" labelTooltip="Tooltip Example" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select
+									id="baseSelect"
+									forceSelection="false"
+									change="changedSelBase"
+									items="{
+										path: '/baseData',
+										sorter: { path: 'Base' }
+									}">
+									<core:Item key="{ID}" text="{Base}" />
+								</Select>							
+							</fb:control>
+							</fb:FilterGroupItem>
+						<!--HERE -->
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="countryListSrch" label="Country" labelTooltip="Tooltip Example" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select
+									id="typeSelect"
+									forceSelection="false"
+									change="changedSelCountry"
+									items="{										
+										path: '/countryData',
+										sorter: { path: 'COUNTRY' }
+									}">
+									<core:Item key="{COUNTRY}" text="{COUNTRY}" />
+								</Select>							
+							</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="groupListSrch" label="Group" labelTooltip="Tooltip Example" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select
+									id="groupSelect"
+									forceSelection="false"
+									change="getTheHexData"
+									items="{										
+										path: '/groupData',
+										sorter: { path: 'ACTOR_1' }
+									}">
+									<core:Item key="{ACTOR_1}" text="{ACTOR_1}" />
+								</Select>							
+							</fb:control>
+							</fb:FilterGroupItem>
+					<!--HERE-->	
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+<!--START Test Placement of Toolbar for MAP-->
+					<tnt:ToolHeader>
+						<Title id="titleMap" text="Message Tools"></Title> 
+						<ToolbarSeparator/>
+						<Button id="buttonMapRoads" icon="sap-icon://geographic-bubble-chart" press="getMsgFootprints" tooltip="Cluster Messages" ariaLabelledBy="actionButtonLabel"/>
+						<ToolbarSeparator/>
+						<Button id="buttonMapSpeedPolys" icon="sap-icon://pushpin-on" press="getTheLineData" class="alertButton" tooltip="Message Analysis" ariaLabelledBy="actionButtonLabel"/>				
+						<Button id="buttonMapRoadNetworkLines" icon="sap-icon://alert" class="sapUiSmallMarginEnd increaseFont" press="" tooltip="Messages Analysis Ready!" ariaLabelledBy="actionButtonLabel"/>
+						<!--<ToolbarSeparator/>-->
+					</tnt:ToolHeader>
+
+<!--END Test Placement of Toolbar for MAP-->					
+<!-- Controls for text search
+					<Label text="Search by Order of Battle" design="Bold"/>
+					<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true"  showGoOnFB="false"  filterBarExpanded="true">
+						<fb:filterGroupItems>
+
+							<fb:FilterGroupItem groupName="__$INTERNAL$" name="forceListSrch" label="Feature Types" labelTooltip="Tooltip Example" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select
+									id="forceSelect"
+									forceSelection="false"
+									change="changedSelSvc"
+									items="{
+										path: '/serviceBranch',
+										sorter: { path: 'ServiceType' }
+									}">
+									<core:Item key="{ServiceType}" text="{ServiceType}" />
+								</Select>							
+							</fb:control>
+							</fb:FilterGroupItem>				
+						</fb:filterGroupItems>
+					</fb:FilterBar>	
+ end controls for search -->					
+<!--INSERRT TABLE HERE search="onFilterListTable" -->
+					<tnt:ToolHeader>
+						<Title id="title" text="Search"></Title> 
+						<SearchField
+							id="searchField"
+							width="10rem"
+							placeholder="Search for..."
+							enableSuggestions="true"
+							search="getSearchData"
+							suggest=".onSuggest"
+							suggestionItems="{
+								path: '/searchData',
+								sorter: { path: 'SNIPPET' }
+							}">
+							<SuggestionItem text="{SNIPPET}" description="Group: {SNIPPET}" key="{SNIPPET}" />
+						</SearchField>
+						<ToolbarSeparator/>
+						<Button id="buttonSearch" icon="sap-icon://overview-chart" press="popUpSearchToGraph" ariaLabelledBy="actionButtonLabel"/>
+
+					</tnt:ToolHeader>
+					<ScrollContainer height='18rem' vertical='true'>
+			        <Table id="idFeatureTable" items="{path:'/searchData'}" mode="SingleSelectMaster" selectionChange="rowSelect" growing="true" growingThreshold="10">
+						<columns>
+							<Column width="5em">
+								<Text text="Score" />
+							</Column>
+							<Column>
+								<Text text="Snippet" />
+							</Column>
+											
+
+						</columns>
+						<items>
+							<ColumnListItem type="Active" press="onListPress">
+								<cells>
+									<Text
+											text="{SCORE}"
+									/>
+									
+									<FormattedText htmlText="{SNIPPET}" />
+
+									<Text
+											text="{ID}" 
+									/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					</ScrollContainer>	
+<!--END INSERT TABLE -->								
+				</l:BlockLayoutCell>
+<!--3rd Party Map Section -->
+				<l:BlockLayoutCell width="80" class="main_title">
+					<tnt:ToolHeader>
+						<Title id="titleTwo" text="Search Tools"></Title> 
+						<ToolbarSeparator/>
+						<ToolbarSpacer/>
+						<Label text="Navigate Hierarchy" design="Bold"/>
+						<Button id="buttonGraph" icon="sap-icon://overview-chart" press="showGraph" ariaLabelledBy="actionButtonLabel"/>
+						<ToolbarSeparator/>
+						<ToolbarSpacer/>
+						<Label text="Geo-Search" design="Bold"/>
+						<Button id="buttonMap" icon="sap-icon://geographic-bubble-chart" press="showMap" ariaLabelledBy="actionButtonLabel"/>
+						<ToolbarSeparator/>
+						<ToolbarSpacer/>
+						<Label text="Echelon Tree" design="Bold"/>
+						<Button id="buttonText" icon="sap-icon://documents" press="showTree" ariaLabelledBy="actionButtonLabel"/>
+						
+
+
+					</tnt:ToolHeader>				
+					<core:HTML content='&lt;div id=&quot;mynetwork&quot; class=&quot;mynetwork&quot; &gt;&lt;/div&gt;'></core:HTML>
+					<!--<core:HTML content='&lt;div id=&quot;map&quot; class=&quot;map&quot; &gt;&lt;/div&gt;'/>-->
+					<!--<core:HTML content='&lt;div id=&quot;map&quot; class=&quot;map&quot; height=&quot;100%&quot; width=&quot;100%&quot; style=&quot;display:block;&quot; &gt;&lt;/div&gt;'></core:HTML>-->
+					<core:HTML content='&lt;div id=&quot;map&quot; class=&quot;map&quot; &gt;&lt;/div&gt;'></core:HTML>
+					<!--TreeMap-->
+					<core:HTML content='&lt;div id=&quot;mytree&quot; class=&quot;mytree&quot; &gt;&lt;/div&gt;'></core:HTML>
+					
+					<!--</core:HTML>-->					
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>	
+<!--End 3rd Party Map Section -->			
+
+			<l:BlockLayoutRow>
+				<l:BlockLayoutCell width="100">
+
+
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>	
+		</l:BlockLayout>
+	</l:VerticalLayout>
+</mvc:View>

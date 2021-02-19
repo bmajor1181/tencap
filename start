@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/node /home/ec2-user/node_xfer/nodeHANA_v2_Share/app.js

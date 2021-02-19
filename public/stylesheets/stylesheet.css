@@ -1,0 +1,157 @@
+/* Set the map size and dress-up the standard title */
+	#map {height: 90%; width: 100%;} 
+.sapMIBar-CTX .sapMTitle{font-size:1.2em; color:#000; font-weight: 900; !important;}
+/*.sapUiBlockLayoutSizeXL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent {margin: 0px; padding:0rem .1rem;  !important;}*/
+.sapUiBlockLayoutSizeL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+}
+.wrapMe {white-space: normal; font-family: verdana; font-weight: normal; font-size: 15px;}
+
+body {overflow-y: hidden;}
+/*Graph Styles below */
+
+    #mynetwork {
+      position:relative;
+      width: 100%;
+      height: 90%;
+      border: 1px solid lightgray;
+      background-color: #ffffff;
+    }
+	i {
+		color: black;
+	}
+	.sapMBtn.increaseFont .sapMBtnIcon {
+		font-size: 1.5rem;
+		color: red;
+	}
+    table.legend_table {
+      font-size: 11px;
+      border-width:1px;
+      border-color:#d3d3d3;
+      border-style:solid;
+    }
+    table.legend_table,td {
+      border-width:1px;
+      border-color:#d3d3d3;
+      border-style:solid;
+      padding: 2px;
+    }
+    div.table_content {
+      width:80px;
+      text-align:center;
+    }
+    div.table_description {
+      width:100px;
+    }
+
+    #operation {
+      font-size:28px;
+    }
+    #network-popUp {
+      display:none;
+      position:absolute;
+      top:350px;
+      left:170px;	  
+      z-index:299;
+      width:250px;
+      height:120px;
+      background-color: #f9f9f9;
+      border-style:solid;
+      border-width:3px;
+      border-color: #5394ed;
+      padding:10px;
+      text-align: center;
+    }
+	/* */
+	/* unvisited link */
+	a:link {
+	  color: red;
+	  text-decoration: none;
+	  border: 1px solid black;
+	  float: right;
+	}
+
+	/* visited link */
+	a:visited {
+	  color: red;
+	  text-decoration: none;
+	  border: 1px solid black;
+	  float: right;	  
+	}
+
+	/* mouse over link */
+	a:hover {
+	  color: red;
+	  text-decoration: none;
+	  border: 1px solid black;
+	  float: right;	  
+	}
+
+	/* selected link */
+	a:active {
+	  color: red;
+	  text-decoration: none;
+	  border: 1px solid black;
+	  float: right;	  
+	}
+	/* TREEMAP */
+	#mytree {
+		overflow: scroll;
+		background-color: aliceBlue;
+	}
+	#mytreePop {
+		/*scroll-auto;*/
+		overflow-y: auto;
+		background-color: aliceBlue;
+	}
+	#SearchToGraphC {
+		overflow: scroll;
+		background-color: aliceBlue;
+		/*background-color: midnightBlue;*/	 	
+	}
+	.node circle {
+	  /*fill: #fff;*/
+	  /*stroke: steelblue;*/
+	  fill: #C0C0C0;
+	  stroke: #C0C0C0;
+	  stroke-width: px;
+	}
+
+	.node text {
+	  font: 7px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 3px;
+	}
+	/* Highlight Document*/
+	.highlight {
+		color: black;
+		border: 1px solid #00c4ff;
+		background-color: rgb(201, 246, 251); 
+		font-weight: bold;		
+	}	
+/*D3 Stuff */
+			.node text {
+			  font: 12px helvetica;
+			}
+			.linkSTG {
+			  stroke: #999;
+			  stroke-opacity: .6;
+			}
+			.cursor {
+			  fill: none;
+			  stroke: brown;
+			  pointer-events: none;
+			}				
+/*END */
+	#docContent {
+		border: 15px solid rgba(0, 0, 0, .5);
+		/*border-style: solid rgba(255, 255, 255, .5);
+		border-width: 0px 50px 50px 50px;*/
+		height: 7%;
+		width: 93.8%;	 
+	}

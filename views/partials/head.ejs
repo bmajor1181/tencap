@@ -1,0 +1,74 @@
+<!--<script id="sap-ui-bootstrap"
+		src="http://3.220.81.75:8000/sap/ui5/1/resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.layout,sap.ui.table"
+		data-sap-ui-theme="sap_belize_hcb"
+		data-sap-ui-xx-bindingSyntax="complex"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-preload=""
+		data-sap-ui-resourceroots='{"FeatureUI": "./"}'>
+</script>-->
+
+
+	<script id="sap-ui-bootstrap"
+		src="https://sapui5.hana.ondemand.com/sdk/resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.layout,sap.ui.table"
+		data-sap-ui-theme="sap_belize_hcb"
+		data-sap-ui-xx-bindingSyntax="complex"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-preload=""
+		data-sap-ui-resourceroots='{"FeatureUI": "./"}'>
+</script>
+	<!-- Application launch configuration -->
+	<script>
+		sap.ui.getCore().attachInit(function() {
+			new sap.m.App ({
+				pages: [
+					new sap.m.Page({
+						title: "Threat Mitagation Platform",
+						enableScrolling : true,
+						content: [ new sap.ui.core.ComponentContainer({
+							name : "FeatureUI"
+						})]
+					})
+				]
+			}).placeAt("content");
+		});
+
+	</script>
+
+  <!-- Load JQuery--> 
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css">
+	<link rel="stylesheet" href="css/leaflet-geoman.css" />
+  
+  <!-- Load Leaflet from CDN-->
+  
+  	<link rel="stylesheet" href="css/leaflet.css" />
+	<script src="javascript/leaflet-src.js"></script>
+	<script src="javascript/leaflet-geoman.min.js"></script>
+	
+	<link href="css/vis.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="javascript/utility.js"></script>
+	<script type="text/javascript" src="javascript/vis.js"></script>
+	
+	<script src="javascript/d3.js"></script>
+	<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+	
+	<script type="text/javascript" src="javascript/allData.js"></script>
+	<script type="text/javascript" src="javascript/fontAwesomeTrans.js"></script>
+	<script type="text/javascript" src="javascript/AnimatedMarker.js"></script>
+	<script type="text/javascript" src="javascript/l.ellipse.min.js"></script>
+	
+	<script src="javascript/d3-selection-multi.v1.js"></script>
+	<!--<script type="text/javascript" src="javascript/base_data.js"></script>-->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> 
+	
+ 
+  <script>
+	//Global for SAPUI5
+	var currPoly;
+	var container;
+
+  </script>

@@ -1,0 +1,22 @@
+{
+  "name": "tencap_sapui5v1",
+  "version": "1.0.0",
+  "description": "TENCAP SAPUI5 Express UI and Services",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",  
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Major",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/hana-client": "^2.4.139",
+    "@sap/hdbext": "^7.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.14.0"
+  },
+  "engines": {
+    "node": "^12.16.1",
+    "npm": "~6.14.0"
+  }
+}
